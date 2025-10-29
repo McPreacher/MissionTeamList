@@ -1,16 +1,17 @@
-# Senior Missions Team — Email Management App (v2)
+# Senior Missions Team — Email Manager
 
-- Add/Edit/Remove members (email & guardian email are optional)
-- Search + role filter
-- Copy All / Students / Chaperones / Selected / Selected+Guardians
-- **Member count** under TEAM LIST reflects current filters
+- Add/Edit/Remove members (email & guardian optional)
+- Passport Yes/No tracking
+- Search + dual filter (Role + Passport)
+- Copy: All / Students / Chaperones / Selected / Selected + Guardians
 - LocalStorage persistence
+- Member count reflects current filters
 
-## Local
+## Run locally
 npm install
 npm run dev
 
 ## Netlify (via GitHub)
-- Build: npm run build
-- Publish dir: dist
-- Base dir: (blank)
+Build command: npm run build
+Publish directory: dist
+Base directory: (leave blank)
