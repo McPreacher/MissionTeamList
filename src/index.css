@@ -2,10 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: improve font rendering */
-html, body, #root {
-  height: 100%;
-}
-body {
-  margin: 0;
-}
+html, body, #root { height: 100%; }
+body { margin: 0; }

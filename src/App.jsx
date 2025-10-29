@@ -63,7 +63,6 @@ export default function MissionEmailManager() {
       await navigator.clipboard.writeText(txt);
       alert("Copied to clipboard");
     } catch {
-      // Fallback prompt for environments blocking clipboard
       prompt("Copy:", txt);
     }
   };
@@ -113,8 +112,8 @@ export default function MissionEmailManager() {
     const email = formEmail.trim();
     const guardianEmail = formGuardian.trim();
 
-    if (!name || !email) {
-      alert("Please enter a name and email.");
+    if (!name) {
+      alert("Please enter a name.");
       return;
     }
 
@@ -125,8 +124,8 @@ export default function MissionEmailManager() {
         id: generateId(),
         name,
         role: formRole,
-        email,
-        guardianEmail: formRole === "student" ? guardianEmail : undefined,
+        email: email || undefined,
+        guardianEmail: formRole === "student" ? guardianEmail || undefined : undefined,
       };
       setMembers((prev) => [...prev, newMember]);
     }
@@ -174,11 +173,11 @@ export default function MissionEmailManager() {
             </div>
             <div className="md:col-span-2">
               <label className="lbl">Email</label>
-              <input className="inp bg-white" placeholder="School or personal" value={formEmail} onChange={(e) => setFormEmail(e.target.value)} />
+              <input className="inp bg-white" placeholder="School or personal (optional)" value={formEmail} onChange={(e) => setFormEmail(e.target.value)} />
             </div>
             <div className="md:col-span-3">
               <label className="lbl">Guardian Email (students only)</label>
-              <input className="inp bg-white" placeholder="Parent/guardian" value={formGuardian} onChange={(e) => setFormGuardian(e.target.value)} />
+              <input className="inp bg-white" placeholder="Parent/guardian (optional)" value={formGuardian} onChange={(e) => setFormGuardian(e.target.value)} />
             </div>
             <div className="flex gap-2 md:col-span-6 mt-3 justify-center">
               <button className="btn-border" type="submit">{editId ? "Save" : "Add"}</button>
@@ -218,8 +217,9 @@ export default function MissionEmailManager() {
         </section>
 
         {/* Team List */}
-        <div className="py-1">
-          <h2 className="section-title">TEAM LIST</h2>
+        <div className="py-1 text-center">
+          <h2 className="section-title mb-2">TEAM LIST</h2>
+          <p className="text-gray-700 font-medium">{filtered.length} Member{filtered.length !== 1 ? "s" : ""}</p>
         </div>
 
         <section className="card">
@@ -245,7 +245,7 @@ export default function MissionEmailManager() {
                     </td>
                     <td className="td font-medium">{m.name}</td>
                     <td className="td capitalize">{m.role}</td>
-                    <td className="td break-all">{m.email}</td>
+                    <td className="td break-all">{m.email || <span className="italic text-gray-400">—</span>}</td>
                     <td className="td break-all text-gray-700">{m.role === "student" ? (m.guardianEmail || <span className="italic text-gray-400">—</span>) : <span className="italic text-gray-400">—</span>}</td>
                     <td className="td">
                       <div className="flex gap-2">

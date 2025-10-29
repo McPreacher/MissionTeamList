@@ -1,26 +1,16 @@
-# Senior Missions Team — Email Management App
+# Senior Missions Team — Email Management App (v2)
 
-A small React + Tailwind app to store student & chaperone names/emails and quickly copy email lists
-for updates. Includes:
-- Add/Edit/Remove people (with guardian emails for students)
-- Search, role filter
+- Add/Edit/Remove members (email & guardian email are optional)
+- Search + role filter
 - Copy All / Students / Chaperones / Selected / Selected+Guardians
+- **Member count** under TEAM LIST reflects current filters
 - LocalStorage persistence
 
-## Run locally
-```bash
+## Local
 npm install
 npm run dev
-```
 
-## Deploy to Netlify (via GitHub)
-1. Create a new GitHub repo and push this folder.
-2. In Netlify, **New site from Git** → select your repo.
-3. Build command: `npm run build`
-   Publish directory: `dist`
-   (No base directory needed)
-4. Deploy.
-
-## Notes
-- Data is stored in browser `localStorage` under the key `sm_members`.
-- You can export/import later if desired.
+## Netlify (via GitHub)
+- Build: npm run build
+- Publish dir: dist
+- Base dir: (blank)
